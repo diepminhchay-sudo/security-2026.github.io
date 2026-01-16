@@ -1,0 +1,12 @@
+
+server:
+  port: 8080
+  environment: production
+
+database:
+  host: db.internal
+  pool_size: 50
+
+security:
+  ssl_enabled: true
+  cert_path: /etc/ssl/certs/gateway.pem

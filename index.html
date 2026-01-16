@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta name="google-site-verification" content="verify_v1_xyz" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="2026 글로벌 카지노 API 통합 문서. 에볼루션, 프라그마틱 등 메이저 벤더 통합 및 원월렛(One-Wallet) 시스템 연동 가이드.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Betting API Gateway: 엔터프라이즈 통합 솔루션">
+    <meta property="og:type" content="website">
+
+    <title>Global Betting API Docs | 2026 통합 가이드</title>
+
+    <style>
+        /* [New Theme] 화이트 & 엔터프라이즈 블루 (전문성/신뢰 강조) */
+        :root { --primary-color: #0052cc; --secondary-color: #172b4d; --bg-color: #ffffff; --light-bg: #f4f5f7; --border-color: #dfe1e6; }
+
+        body { font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: var(--secondary-color); background: var(--bg-color); margin: 0; padding: 0; line-height: 1.7; }
+
+        /* 상단 네비게이션 스타일 */
+        .navbar { background: var(--primary-color); color: white; padding: 1rem 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .navbar h1 { margin: 0; font-size: 1.5rem; font-weight: 600; display: flex; align-items: center; }
+        .navbar .badge { background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-left: 10px; }
+
+        /* 레이아웃 */
+        .wrapper { max-width: 960px; margin: 0 auto; padding: 40px 20px; display: flex; gap: 40px; }
+        .sidebar { width: 250px; border-right: 1px solid var(--border-color); padding-right: 20px; display: none; } /* 모바일 고려 숨김 */
+        .main-content { flex: 1; }
+
+        @media (min-width: 768px) { .sidebar { display: block; } }
+
+        /* 타이포그래피 */
+        h2 { color: var(--primary-color); border-bottom: 2px solid var(--light-bg); padding-bottom: 10px; margin-top: 40px; font-size: 1.8rem; }
+        h3 { color: #42526e; margin-top: 30px; font-size: 1.3rem; }
+        p { margin-bottom: 1.5em; color: #505f79; }
+
+        /* 코드 블록 (밝은 테마) */
+        pre { background: var(--light-bg); padding: 15px; border-radius: 5px; border: 1px solid var(--border-color); overflow-x: auto; }
+        code { font-family: Consolas, Monaco, 'Andale Mono', monospace; color: #d63384; }
+
+        /* 핵심 CTA 버튼 (머니사이트 연결) */
+        .api-status-box { background: #e3fcef; border: 1px solid #006644; padding: 25px; border-radius: 8px; margin: 40px 0; text-align: center; }
+        .btn-primary { display: inline-block; background: #006644; color: white; padding: 12px 30px; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background 0.2s; margin-top: 15px; }
+        .btn-primary:hover { background: #004d33; }
+
+        /* 테이블 스타일 */
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid var(--border-color); padding: 12px; text-align: left; }
+        th { background: var(--light-bg); color: var(--secondary-color); }
+
+        footer { text-align: center; padding: 40px; color: #6b778c; font-size: 0.9rem; border-top: 1px solid var(--border-color); margin-top: 60px; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <h1>Global Betting Gateway <span class="badge">v5.0 Enterprise</span></h1>
+    </nav>
+
+    <div class="wrapper">
+        <!-- 사이드바 메뉴 (있어 보이는 척) -->
+        <aside class="sidebar">
+            <h3>Documentation</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li><strong>1. Getting Started</strong></li>
+                <li>&nbsp;&nbsp;├ Authorization</li>
+                <li>&nbsp;&nbsp;└ Error Codes</li>
+                <li><strong>2. Game Integration</strong></li>
+                <li>&nbsp;&nbsp;├ Slot API</li>
+                <li>&nbsp;&nbsp;└ Live Casino</li>
+                <li><strong>3. Wallet System</strong></li>
+                <li>&nbsp;&nbsp;└ Transaction</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <h2>1. 통합 솔루션 개요 (Overview)</h2>
+            <p>
+                <strong>Global Betting Gateway (GBG)</strong>는 전 세계 50개 이상의 메이저 게임 공급사(Vendor)를 단 하나의 API로 연결하는 통합 미들웨어입니다.
+                2026년 최신 업데이트를 통해 <strong>무중단 서버 배포</strong> 기술과 <strong>실시간 정산(Real-time Settlement)</strong> 시스템이 적용되었습니다.
+            </p>
+            <p>
+                본 문서는 개발자와 운영자가 안전한 베팅 환경을 구축하기 위해 필요한 <strong>기술적 요구사항</strong>과 <strong>검증된 파트너사 목록</strong>을 제공합니다.
+            </p>
+
+            <h2>2. 시스템 아키텍처 (Architecture)</h2>
+            <p>
+                안정적인 서비스를 위해 MSA(Microservice Architecture)를 채택하였으며, 모든 트랜잭션은 256bit SSL로 암호화되어 전송됩니다.
+                특히, <strong>먹튀 방지 프로토콜</strong>이 적용된 서버만이 당사의 API 게이트웨이에 접속할 수 있습니다.
+            </p>
+
+            <h3>2.1 지원되는 게임 벤더 (Supported Vendors)</h3>
+            <table>
+                <tr>
+                    <th>Vendor Name</th>
+                    <th>Game Type</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>Evolution Gaming</td>
+                    <td>Live Casino</td>
+                    <td><span style="color:green">● Stable</span></td>
+                </tr>
+                <tr>
+                    <td>Pragmatic Play</td>
+                    <td>Slots & Mini Games</td>
+                    <td><span style="color:green">● Stable</span></td>
+                </tr>
+            </table>
+
+            <h2>3. API 연동 예제 (Code Snippet)</h2>
+            <p>사용자 세션을 검증하고 게임 런칭 URL을 생성하는 표준 Node.js 코드입니다.</p>
+            <pre><code>
+const axios = require('axios');
+
+async function launchGame(userToken, gameCode) {
+    const response = await axios.post('/api/v5/launcher', {
+        token: userToken,
+        game_id: gameCode,
+        currency: 'KRW',
+        platform: 'MOBILE'
+    });
+
+    // 검증된 안전 주소 반환
+    return response.data.launch_url;
+}
+            </code></pre>
+
+            <div class="api-status-box">
+                <h3>⚡ 라이브 서버 상태 확인</h3>
+                <p>
+                    현재 운영 중인 <strong>메이저 파트너사</strong>의 서버 상태를 실시간으로 모니터링할 수 있습니다.<br>
+                    안전하고 쾌적한 접속 환경을 확인하려면 아래 공식 대시보드를 이용하십시오.
+                </p>
+                <a href="https://www.senaninews.com/" class="btn-primary" target="_blank">
+                    공식 파트너 허브 접속하기 (Hub Access)
+                </a>
+            </div>
+
+            <h2>4. 보안 정책 (Security Policy)</h2>
+            <p>
+                비정상적인 배팅 패턴(양방, 시스템 배팅)은 AI 모니터링 시스템에 의해 자동으로 감지됩니다.
+                클라이언트는 반드시 <strong>정식 라이선스</strong>가 확인된 도메인을 통해서만 API를 호출해야 합니다.
+            </p>
+        </main>
+    </div>
+
+    <footer>
+        <p>Copyright © 2026 Global Betting Tech Alliance. All rights reserved.<br>
+        Powered by GitHub Pages & Enterprise Cloud.</p>
+    </footer>
+
+</body>
+</html>
